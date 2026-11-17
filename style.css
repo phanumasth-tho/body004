@@ -1,0 +1,565 @@
+/* ==========================================================================
+   Body Scent — Premium Minimal Theme
+   โทน: ขาว-ครีม-เบจเข้ม | accent: ทอง/บรอนซ์อ่อน
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+Thai:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500&display=swap");
+
+/* ---------- Design tokens ---------- */
+:root {
+  /* พื้นหลัง */
+  --color-white: #ffffff;
+  --color-cream: #faf6ef;
+  --color-cream-deep: #f1e9dc;
+  --color-beige: #d9cbb4;
+  --color-beige-dark: #8a7a63;
+
+  /* ตัวอักษร */
+  --color-text: #3b342b;
+  --color-text-soft: #6f6556;
+  --color-text-mute: #9a8f7e;
+
+  /* accent ทอง/บรอนซ์อ่อน */
+  --color-accent: #b08d57;
+  --color-accent-dark: #8c6d3f;
+  --color-accent-soft: #e6d6b8;
+
+  /* เส้นขอบ (บาง นุ่มตา) */
+  --color-line: #e4d9c6;
+  --color-line-strong: #bfae92;
+
+  /* สีของแต่ละ mood (ใช้แตะเล็กน้อยเท่านั้น) */
+  --mood-fresh: #2f4a3a;
+  --mood-sweet: #7b5a8c;
+  --mood-confident: #3f4f5e;
+  --mood-romance: #c98c8c;
+
+  /* ฟอนต์ */
+  --font-heading: "Cormorant Garamond", "Noto Serif Thai", Georgia, serif;
+  --font-serif-th: "Noto Serif Thai", "Cormorant Garamond", Georgia, serif;
+  --font-body: "Noto Sans Thai", "Helvetica Neue", Arial, sans-serif;
+
+  /* spacing (เว้นระยะเยอะ ให้โปร่ง) */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.75rem;
+  --space-lg: 3rem;
+  --space-xl: 5rem;
+  --space-2xl: 8rem;
+
+  --container: 1120px;
+  --radius: 2px;
+  --transition: 0.35s ease;
+}
+
+/* ---------- Reset / base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-cream);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-text);
+}
+
+:focus-visible {
+  outline: 1px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* ---------- Typography ---------- */
+h1,
+h2,
+h3,
+h4 {
+  margin: 0 0 var(--space-sm);
+  font-family: var(--font-heading);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.04em;
+  color: var(--color-text);
+}
+
+h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 400; }
+h2 { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text-soft);
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--color-accent-dark);
+}
+
+.lead {
+  font-family: var(--font-serif-th);
+  font-weight: 300;
+  font-size: 1.1rem;
+  line-height: 2;
+  color: var(--color-text-soft);
+}
+
+.text-center { text-align: center; }
+
+/* เส้นทองเล็กๆ ใต้หัวข้อ */
+.divider {
+  display: block;
+  width: 48px;
+  height: 1px;
+  margin: var(--space-md) auto;
+  background: var(--color-accent);
+  border: 0;
+}
+
+/* ---------- Layout ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+.section--white { background: var(--color-white); }
+.section--cream-deep { background: var(--color-cream-deep); }
+
+.section-head {
+  max-width: 640px;
+  margin: 0 auto var(--space-xl);
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid--2 { grid-template-columns: repeat(2, 1fr); }
+.grid--3 { grid-template-columns: repeat(3, 1fr); }
+.grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.site-header .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 76px;
+}
+
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: var(--space-lg);
+}
+
+.nav a {
+  font-size: 0.85rem;
+  letter-spacing: 0.14em;
+  color: var(--color-text-soft);
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+}
+
+.nav a:hover,
+.nav a.is-active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---------- Buttons (เส้นบาง ไม่ฉูดฉาด) ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.95rem 2.4rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-align: center;
+  cursor: pointer;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid var(--color-text);
+  border-radius: var(--radius);
+  transition: background var(--transition), color var(--transition),
+    border-color var(--transition);
+}
+
+.btn:hover {
+  background: var(--color-text);
+  color: var(--color-cream);
+}
+
+.btn--accent {
+  border-color: var(--color-accent);
+  color: var(--color-accent-dark);
+}
+
+.btn--accent:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-white);
+}
+
+.btn--solid {
+  background: var(--color-text);
+  color: var(--color-cream);
+}
+
+.btn--solid:hover {
+  background: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.btn--small {
+  padding: 0.6rem 1.4rem;
+  font-size: 0.75rem;
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ---------- Mood: แตะสีเล็กน้อยเท่านั้น ---------- */
+.mood-fresh      { --mood: var(--mood-fresh); }
+.mood-sweet      { --mood: var(--mood-sweet); }
+.mood-confident  { --mood: var(--mood-confident); }
+.mood-romance    { --mood: var(--mood-romance); }
+
+/* จุดสีเล็กๆ */
+.mood-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 0.6rem;
+  border-radius: 50%;
+  background: var(--mood, var(--color-accent));
+  vertical-align: middle;
+}
+
+/* เส้นสีบางๆ ใต้หัวข้อ */
+.mood-line {
+  display: block;
+  width: 36px;
+  height: 2px;
+  margin: var(--space-xs) 0 var(--space-sm);
+  background: var(--mood, var(--color-accent));
+}
+
+.text-center .mood-line { margin-left: auto; margin-right: auto; }
+
+/* ป้ายชื่อ mood แบบตัวอักษร + จุด */
+.mood-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-text-soft);
+}
+
+/* ---------- Product card (พื้นขาว/ครีม ไม่ทาสีเต็มการ์ด) ---------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  transition: border-color var(--transition), transform var(--transition),
+    box-shadow var(--transition);
+}
+
+.card:hover {
+  border-color: var(--color-line-strong);
+  transform: translateY(-3px);
+  box-shadow: 0 18px 36px -24px rgba(59, 52, 43, 0.35);
+}
+
+.card__image {
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--color-cream-deep);
+}
+
+.card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.card:hover .card__image img {
+  transform: scale(1.03);
+}
+
+.card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-md);
+}
+
+.card__title {
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-serif-th);
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.card__meta {
+  margin-bottom: var(--space-sm);
+  font-size: 0.82rem;
+  color: var(--color-text-mute);
+  letter-spacing: 0.08em;
+}
+
+.card__desc {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-line);
+}
+
+.price {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-accent-dark);
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Filter / tabs ---------- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm) var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.filter {
+  padding: 0.4rem 0;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  color: var(--color-text-mute);
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  cursor: pointer;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.filter:hover { color: var(--color-text); }
+
+.filter.is-active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent);
+}
+
+/* ---------- Forms (สำหรับหน้าสั่งซื้อ) ---------- */
+.form-group { margin-bottom: var(--space-md); }
+
+label {
+  display: block;
+  margin-bottom: var(--space-xs);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: var(--color-text-soft);
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.85rem 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--color-text);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-line-strong);
+  border-radius: 0;
+  transition: border-color var(--transition);
+}
+
+textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: var(--color-accent);
+}
+
+::placeholder { color: var(--color-text-mute); }
+
+/* ---------- Cart / summary ---------- */
+.summary {
+  padding: var(--space-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-line);
+}
+
+.summary__row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+  font-size: 0.95rem;
+}
+
+.summary__total {
+  margin-top: var(--space-sm);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-line-strong);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  color: var(--color-accent-dark);
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding: var(--space-xl) 0 var(--space-lg);
+  background: var(--color-cream-deep);
+  border-top: 1px solid var(--color-line);
+  text-align: center;
+}
+
+.site-footer .logo { display: inline-block; margin-bottom: var(--space-sm); }
+
+.site-footer p {
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text-mute);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --space-lg: 2rem;
+    --space-xl: 3.5rem;
+    --space-2xl: 5rem;
+  }
+
+  .container { padding: 0 var(--space-sm); }
+
+  .site-header .container {
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
+  }
+
+  .nav { gap: var(--space-md); }
+
+  .grid--2,
+  .grid--3 { grid-template-columns: 1fr; }
+
+  .section-head { margin-bottom: var(--space-lg); }
+
+  .btn { width: 100%; }
+  .card__footer .btn { width: auto; }
+}
+
+@media (max-width: 480px) {
+  .grid--4 { grid-template-columns: 1fr; }
+  body { font-size: 0.95rem; }
+  .filters { gap: var(--space-xs) var(--space-sm); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
